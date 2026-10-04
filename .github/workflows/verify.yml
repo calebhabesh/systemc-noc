@@ -1,0 +1,26 @@
+name: Verify simulator
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  simulate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build SystemC 3.0.0
+        run: |
+          git clone --depth 1 --branch 3.0.0 https://github.com/accellera-official/systemc.git /tmp/systemc
+          cmake -S /tmp/systemc -B /tmp/systemc-build -DCMAKE_INSTALL_PREFIX=/tmp/systemc-install -DCMAKE_CXX_STANDARD=17 -DCMAKE_BUILD_TYPE=Release
+          cmake --build /tmp/systemc-build -j2
+          cmake --install /tmp/systemc-build
+      - name: Build and verify the mesh
+        run: |
+          cmake -S . -B build -DCMAKE_PREFIX_PATH=/tmp/systemc-install
+          cmake --build build -j2
+          ctest --test-dir build --output-on-failure
+          python3 scripts/sweep.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: traffic-sweep
+          path: docs/evidence/traffic-sweep.csv

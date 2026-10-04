@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.16)
+project(systemc_noc LANGUAGES CXX)
+find_package(SystemCLanguage CONFIG REQUIRED)
+find_package(Python3 COMPONENTS Interpreter REQUIRED)
+add_executable(noc src/arbiter.cpp src/buf_fifo.cpp src/crossbar.cpp src/router.cpp
+  src/source.cpp src/sink.cpp src/main_noc.cpp)
+set_target_properties(noc PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
+target_link_libraries(noc PRIVATE SystemC::systemc)
+enable_testing()
+add_test(NAME delivery COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/delivery.py $<TARGET_FILE:noc>)
+set_tests_properties(delivery PROPERTIES TIMEOUT 30)
