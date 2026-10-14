@@ -9,6 +9,17 @@ This is architecture modeling, not synthesized RTL or a physical FPGA implementa
 
 ![Measured latency and throughput for three traffic patterns](docs/assets/traffic-sweep.png)
 
+## Demo
+
+[![Stride and hotspot traffic replayed side by side on the 4×4 mesh](docs/assets/traffic-demo-poster.png)](docs/assets/traffic-demo.mp4)
+
+[Watch the 22-second replay (MP4)](docs/assets/traffic-demo.mp4). Two runs at the
+same injection rate (16 sources × 100 flits, one every 50 ns), replayed from their
+VCD traces: stride traffic delivers every flit in 5.02 µs at 12.5 ns mean latency,
+while hotspot traffic to node 0 takes 28.84 µs at 911.25 ns. The trace records
+injection and delivery, not per-hop positions, so a route is lit while its flits
+are in flight. Regenerate with [`scripts/replay.py`](scripts/replay.py).
+
 ## What I built
 
 The course supplied a 1×2 router/FIFO/crossbar baseline. My submitted work expanded
