@@ -1,0 +1,12 @@
+{
+  "repository": "calebhabesh/systemc-noc",
+  "purpose": "GitHub README player; the committed MP4 is the source file.",
+  "videos": [
+    {
+      "path": "docs/assets/traffic-demo.mp4",
+      "url": "https://github.com/user-attachments/assets/b1f9b87b-f80c-4ba5-a3b9-316342f6bc45",
+      "sha256": "e2cdbb2d7e1f18fd8c2f96672adfe7bbf8cd927790dc488a9b3ec1b0d4c4a9cf",
+      "bytes": 710170
+    }
+  ]
+}

@@ -11,9 +11,9 @@ This is architecture modeling, not synthesized RTL or a physical FPGA implementa
 
 ## Demo
 
-[![Stride and hotspot traffic replayed side by side on the 4×4 mesh](docs/assets/traffic-demo-poster.png)](docs/assets/traffic-demo.mp4)
+https://github.com/user-attachments/assets/b1f9b87b-f80c-4ba5-a3b9-316342f6bc45
 
-[Watch the 22-second replay (MP4)](docs/assets/traffic-demo.mp4). Two runs at the
+[MP4 source](docs/assets/traffic-demo.mp4) · Two runs at the
 same injection rate (16 sources × 100 flits, one every 50 ns), replayed from their
 VCD traces: stride traffic delivers every flit in 5.02 µs at 12.5 ns mean latency,
 while hotspot traffic to node 0 takes 28.84 µs at 911.25 ns. The trace records
